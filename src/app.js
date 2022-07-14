@@ -1,4 +1,4 @@
-import { createGitgraph, Mode, templateExtend } from "@gitgraph/js";
+import { createGitgraph, templateExtend } from "@gitgraph/js";
 
 const graphContainerOption1 = document.getElementById("gitgraph_option1");
 const gitgraphOption1 = createGitgraph(graphContainerOption1, {
@@ -52,7 +52,13 @@ newFeatureOption2.commit({
   author: "User 2 <user2@provider.com>",
   subject: "Fix tests",
 });
-mainOption2.merge(newFeatureOption2, "Release new version");
+mainOption2.merge({
+  branch: newFeatureOption2,
+  commitOptions: {
+    author: "MasterBlaster <masterblaster@provider.com>",
+    subject: "Release new version",
+  },
+});
 
 const graphContainerOption3 = document.getElementById("gitgraph_option3");
 const gitgraphOption3 = createGitgraph(graphContainerOption3, {

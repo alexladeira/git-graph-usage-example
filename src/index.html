@@ -3,11 +3,41 @@
   <head>
     <meta charset="utf-8" />
     <title>GitGraph.js Usage Example</title>
+    <link rel="stylesheet" href="styles.css" />
     <script type="module" src="app.js"></script>
   </head>
   <body>
-    <div id="gitgraph_option1"></div>
-    <div id="gitgraph_option2"></div>
-    <div id="gitgraph_option3"></div>
+    <div class="centered">
+      <div>
+        <button onclick="display('one')">One Branch Only</button>
+        <button onclick="display('two')">Developer Branch</button>
+        <button onclick="display('three')">Multiple Branches</button>
+      </div>
+
+      <div id="one" class="graph">
+        <div id="gitgraph_option1"></div>
+      </div>
+
+      <div id="two" class="graph" style="visibility: hidden">
+        <div id="gitgraph_option2"></div>
+      </div>
+
+      <div id="three" class="graph" style="visibility: hidden">
+        <div id="gitgraph_option3"></div>
+      </div>
+    </div>
+
+    <script>
+      function display(graph) {
+        var i;
+        var x = document.getElementsByClassName("graph");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.visibility = "hidden";
+          x[i].style.display = "none";
+        }
+        document.getElementById(graph).style.visibility = "visible";
+        document.getElementById(graph).style.display = "block";
+      }
+    </script>
   </body>
 </html>
